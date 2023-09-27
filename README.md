@@ -1,5 +1,5 @@
 # Shared prompts project
-This project is from javascript mastery youtube channel, [link to the project on youtube] (https://www.youtube.com/watch?v=wm5gMKuwSYk&t=426s&pp=ygUpc2hhcmVkIHByb21wdHMgcHJvamVjdCBqYXZhc2NyaXB0IG1hc3Rlcnk%3D)
+This project is from javascript mastery youtube channel, [link to the project on youtube](https://www.youtube.com/watch?v=wm5gMKuwSYk&t=1s&ab_channel=JavaScriptMastery)
 
 ## What is the need of this repo ?
 There are a lot of repositories out there (including the repository containing the source code from the channel itself) so I am not sharing this just to clutter github with the same code . But instead, I created this repo for 2 reasons: 
