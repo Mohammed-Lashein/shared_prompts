@@ -6,3 +6,4 @@ There are a lot of repositories out there (including the repository containing t
 
 1. Train myself on working on big projects (or at least not a todo app !) while commiting changes and developing small chunks of code . 
 2. I write comments in the code extensively about new things introduced in the code from the video and wasn't explained in detail or wasn't explained at all , so here I write what I found after asking and reading here and there, so that I can save you some time or at least give you an idea of what a newly introduced code is doing .
+
