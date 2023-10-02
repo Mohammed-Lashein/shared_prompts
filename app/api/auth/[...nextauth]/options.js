@@ -8,16 +8,19 @@ export const options = {
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     })
   ],
-  callback: {
+  callbacks: {
+    /* writing it callback and not callbacks will ruin an hour from your life trying to debug .  */
     async session({session}) {
-      console.log('###This is the session value coming from session callback fn in the options file ');
-      console.log(session);
-      console.log('##END of SESSION##');
+      // console.log('###This is the session value coming from session callback fn in the options file ');
+      // console.log(session);
+      // console.log('##END of SESSION##');
 
      const sessionUser = await User.findOne({email: session.user.email})
      session.user.id = sessionUser._id.toString()
     //  What is the need of the above line of code ?
     // It simply checks if the user in this session is found in the DB, and if so , modify the id of the user object in the session to the id got from the db of the online user now (In other words, we want to track the online user so that we're getting his id to make sure that he is the one of this account ).
+
+    // Also, we will use that id in the create-prompt route , where we will pass the user.id to the newly created prompt, so that each newly created prompt has in the DB the id of the user who created it . 
     return session
     },
     async signIn({profile}) {
