@@ -27,10 +27,12 @@ const CreatePrompt =  () => {
         })
       })
       if (response.ok) {
-        console.log('##This is the response returned from creating a new prompt##');
-        console.log(response);
-        console.log('##This is the ok value of the response returned from creating a new prompt ##');
-        console.log(response.ok);
+        // console.log('##This is the response returned from creating a new prompt##');
+        // console.log(response);
+        // console.log('##This is the ok value of the response returned from creating a new prompt ##');
+        // console.log(response.ok);
+
+        /* After logging it, response.ok returns a boolean value either true or false .  */
         router.push('/profile')
 
       }

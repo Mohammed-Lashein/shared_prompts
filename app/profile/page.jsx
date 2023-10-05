@@ -1,17 +1,17 @@
 'use client'
 import Profile from '@/components/Profile'
 import { useSession } from 'next-auth/react'
+import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
-
-
 const ProfileLayout = () => {
   const [posts, setPosts] = useState([])
   const {data: session} = useSession()
   // If you wanna check what the strucure of the returned value from useSession hook is, check the navbar component as I explained that in detail .  
+  const router = useRouter()
 
-    async function fetchUserPosts(){
-      const userPosts = await fetch(`/api/users/${session?.user.id}/posts`)
-      const data = await userPosts.json()
+    const fetchUserPosts = async () => {
+      const response = await fetch(`/api/users/${session?.user.id}/posts`)
+      const data = await response.json()
       setPosts(data)
     }
 
@@ -23,8 +23,20 @@ const ProfileLayout = () => {
       }
     }, [])
 
-  const handleEdit = (post) => {}
-  const handleDelete = (post) => {}
+  const handleEdit = (post) => {
+    router.push(`/edit-prompt?id=${post._id}`)
+  }
+  const handleDelete = async (post) => {
+    const hasConfirmed = confirm('Are you sure you want to delete this prompt ?')
+    if (hasConfirmed) {
+       await fetch(`/api/prompt/${post._id.toString()}`, {
+        method: 'DELETE'
+      })
+      // No need to put the fetch result in a variable as we won't use it 
+      const filteredPosts = posts.filter((item) => item._id !== post._id)
+      setPosts(filteredPosts)
+    }
+  }
   return <Profile
           type='My'
           desc='Welcome to your personalized profile'

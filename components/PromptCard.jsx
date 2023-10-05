@@ -1,6 +1,6 @@
 'use client'
 import { useSession } from 'next-auth/react'
-import { Image } from 'next/image'
+import  Image  from 'next/image'
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'
 const PromptCard = ({ post, handleEdit, handleDelete }) => {
@@ -50,7 +50,7 @@ const PromptCard = ({ post, handleEdit, handleDelete }) => {
 				{/* We should write the funcitonality of the tag click in the profile component but use it here.  */}
 				{post.tag}
 			</p>
-			{session?.user.id === post.createdBy._id && pathName === '/profile' ? (
+			{session?.user.id === post.createdBy?._id && pathName === '/profile' ? (
 				<div className='gap-4 pt-3 mt-5 border-t border-gray-100 flex-center'>
 					<p
 						className='cursor-pointer font-inter green_gradient'

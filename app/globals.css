@@ -125,7 +125,9 @@
 }
 
 .prompt_layout {
-  @apply py-8 space-y-6 sm:columns-2 sm:gap-6 xl:columns-3;
+  @apply grid py-8 space-y-6 sm:columns-2 sm:gap-6 xl:columns-3 sm:grid-cols-2 xl:grid-cols-3;
+  /* In the desktop version, you will find that the 4th prompt card appears on the right side as opposed to be on the left side . I asked AI and found that this is because columns property is not a native tailwind property but grid-cols-{columnsNumber}, so to get the desired result we should use the grid .
+  But I faced another issue where the margin was removed from the 1st promptCard (because of a selector here in the stylesheet that adds margin to all the children of this container except the first one . This selector is the utility class space-y-6 ) so I explicitly added a margin to the prompt_card class .  */
 }
 
 /* Feed Component */
@@ -163,7 +165,7 @@
 
 /* PromptCard Component */
 .prompt_card {
-  @apply flex-1 break-inside-avoid rounded-lg border border-gray-300 bg-white/20 bg-clip-padding p-6 pb-4 backdrop-blur-lg backdrop-filter md:w-[360px] w-full h-fit;
+  @apply flex-1 break-inside-avoid rounded-lg border border-gray-300 bg-white/20 bg-clip-padding p-6 pb-4 backdrop-blur-lg backdrop-filter md:w-[360px] w-full h-fit mt-6;
 }
 
 .flex-center {
