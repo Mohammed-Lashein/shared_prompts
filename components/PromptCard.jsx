@@ -3,7 +3,7 @@ import { useSession } from 'next-auth/react'
 import  Image  from 'next/image'
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'
-const PromptCard = ({ post, handleEdit, handleDelete }) => {
+const PromptCard = ({ post, handleEdit, handleDelete, handleTagClick }) => {
 	const [copied, setCopied] = useState('')
 	const pathName = usePathname()
 	const { data: session } = useSession()
@@ -31,6 +31,7 @@ const PromptCard = ({ post, handleEdit, handleDelete }) => {
 						height={40}
 						src={post.createdBy?.image}
 						alt='user photo'
+						className='rounded-full'
 					/>
 					<div className='flex flex-col'>
 						<h3 className='font-semibold text-gray-900 font-satoshi'>{post?.createdBy?.username}</h3>
@@ -48,7 +49,7 @@ const PromptCard = ({ post, handleEdit, handleDelete }) => {
 				</div>
 			</div>
 			<p className='my-4 text-sm text-gray-700 font-satoshi'>{post.prompt}</p>
-			<p className='cursor-pointer font-inter blue_gradient'>
+			<p className='cursor-pointer font-inter blue_gradient' onClick={() => handleTagClick(post.tag)}>
 				{/* We should write the funcitonality of the tag click in the profile component but use it here.  */}
 				{post.tag}
 			</p>
