@@ -9,7 +9,9 @@ const PromptCard = ({ post, handleEdit, handleDelete }) => {
 	const { data: session } = useSession()
 	const handleTextCopy = () => {
 		setCopied(post.prompt)
-		navigator.clipboard.writeText(copied)
+		// navigator.clipboard.writeText(copied)
+		/* The above code didn't work on copying and pasting, maybe because we were accessing the value of copied after updating it but we were in the same place of update, so the update haven't taken place yet . Also, I found in the source code that the instructor used in the writeText method post.prompt and not copied . */
+		navigator.clipboard.writeText(post.prompt)
 		setTimeout(() => setCopied(''), 3000)
 		/* Explanation of navigator.clipboard : This is a web API which is native js (I thought it was from nextjs but actually it is not) and it allows us to deal with the clipboard (read and write) present on the system of the user device .  */
 
@@ -32,7 +34,7 @@ const PromptCard = ({ post, handleEdit, handleDelete }) => {
 					/>
 					<div className='flex flex-col'>
 						<h3 className='font-semibold text-gray-900 font-satoshi'>{post?.createdBy?.username}</h3>
-						<p className='font-gray-500'>{post?.createdBy?.email}</p>
+						<p className='text-gray-500'>{post?.createdBy?.email}</p>
 					</div>
 				</div>
 				<div className='copy_btn'>
